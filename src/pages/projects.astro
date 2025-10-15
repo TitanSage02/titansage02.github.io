@@ -1,0 +1,353 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const projects = [
+  {
+    title: 'BioStar',
+    category: 'IA & Recherche Spatiale',
+    description: 'Plateforme intelligente utilisant RAG (Mistral AI + FAISS) pour démocratiser l\'accès aux publications scientifiques de la NASA sur la biologie spatiale.',
+    tags: ['RAG', 'Mistral AI', 'FAISS', 'Next.js', 'FastAPI'],
+    link: '/blog/biostar',
+    github: 'https://github.com/TitanSage02/BioStar-NASA-Space-Apps-Challenge-2025',
+    demo: 'https://biostarapp.vercel.app',
+    featured: true
+  },
+  {
+    title: 'VoxThymio',
+    category: 'Robotique & NLP',
+    description: 'Système avancé de contrôle vocal pour robots Thymio utilisant Whisper, BERT et apprentissage dynamique de commandes en langage naturel.',
+    tags: ['Whisper', 'NLP', 'ChromaDB', 'Python', 'Thymio'],
+    link: '/blog/voxthymio',
+    github: 'https://github.com/TitanSage02/Vox-Thymio',
+    featured: true
+  },
+  {
+    title: 'CREC Presence',
+    category: 'Systèmes Embarqués & IoT',
+    description: 'Système AIoT de pointage biométrique sécurisé combinant reconnaissance faciale (InsightFace) et RFID pour authentification anti-fraude (98.97% de précision).',
+    tags: ['Edge Computing', 'MQTT', 'Raspberry Pi', 'InsightFace', 'FastAPI'],
+    link: '/blog/crec-presence',
+    featured: true
+  },
+  {
+    title: 'SmartEye',
+    category: 'Computer Vision & IA',
+    description: 'Système de surveillance intelligente pour détection automatique d\'incidents urbains (accidents, incendies, violences) avec Gemini Vision AI.',
+    tags: ['Gemini Vision', 'Streamlit', 'OpenCV', 'Object Detection'],
+    link: '/blog/smarteye',
+    github: 'https://github.com/TitanSage02/SmartEye'
+  },
+  {
+    title: 'RevealMe',
+    category: 'Cybersécurité & OSINT',
+    description: 'Framework OSINT intelligent utilisant GPT-o1 et agents spécialisés pour analyser l\'empreinte numérique publique et détecter les risques de privacy.',
+    tags: ['OSINT', 'GPT-o1', 'Agents', 'Streamlit', 'Web Scraping'],
+    link: '/blog/revealme',
+    github: 'https://github.com/TitanSage02/RevealMe',
+    demo: 'https://revealme.streamlit.app'
+  },
+  {
+    title: 'e-Juris',
+    category: 'IA & Droit',
+    description: 'Assistant juridique intelligent utilisant RAG (Gemini Pro + FAISS) pour répondre aux questions sur le Code du Numérique béninois.',
+    tags: ['RAG', 'Gemini Pro', 'FAISS', 'Langchain', 'Legal Tech'],
+    link: '/blog/e-juris',
+    github: 'https://github.com/TiTanSage02/eJuris'
+  },
+  {
+    title: 'GestureFlow PDF Viewer',
+    category: 'Computer Vision & HCI',
+    description: 'Visionneuse PDF innovante avec contrôle gestuel utilisant MediaPipe et CVZone pour navigation, zoom et contrôle du curseur par gestes de la main.',
+    tags: ['MediaPipe', 'CVZone', 'PySide6', 'OpenCV', 'Gesture Recognition'],
+    link: '/blog/hand-controller',
+    github: 'https://github.com/TitanSage02/gestureflow-pdf-viewer'
+  },
+  {
+    title: 'PairQR',
+    category: 'Web & Sécurité',
+    description: 'Plateforme P2P de partage chiffré (AES-256) de fichiers et messages avec appairage QR code et WebRTC pour communication temps réel.',
+    tags: ['WebRTC', 'P2P', 'Encryption', 'QR Code', 'React', 'Node.js'],
+    link: '/blog/pairqr'
+  },
+  {
+    title: 'Smart Shopping Cart',
+    category: 'IoT & Robotique',
+    description: 'Caddie autonome avec localisation indoor par trilatération BLE (ESP32) qui suit automatiquement le client dans un magasin.',
+    tags: ['BLE', 'ESP32', 'Arduino', 'MQTT', 'Trilateration', 'IoT'],
+    link: '/blog/smart-shopping-cart'
+  }
+];
+
+const categories = [...new Set(projects.map(p => p.category))];
+---
+
+<BaseLayout title="Projets | Espérance AYIWAHOUN" description="Découvrez mes projets en IA, robotique, systèmes embarqués et innovation technologique">
+  <Header />
+  
+  <main class="projects-page">
+    <div class="container">
+      <!-- Hero -->
+      <section class="projects-hero">
+        <h1>🚀 Projets Techniques</h1>
+        <p class="hero-description">
+          Découvrez mes réalisations en intelligence artificielle, robotique, systèmes embarqués et développement web. 
+          Chaque projet combine innovation technologique et impact pratique.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">{projects.length}</span>
+            <span class="stat-label">Projets</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">{categories.length}</span>
+            <span class="stat-label">Catégories</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">{projects.filter(p => p.featured).length}</span>
+            <span class="stat-label">Projets Phares</span>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Projets Grid -->
+      <section class="projects-grid">
+        {projects.map(project => (
+          <article class:list={['project-card', { featured: project.featured }]}>
+            {project.featured && <div class="featured-badge">⭐ Projet Phare</div>}
+            
+            <div class="project-header">
+              <span class="category-badge">{project.category}</span>
+              <h2><a href={project.link}>{project.title}</a></h2>
+            </div>
+            
+            <p class="project-description">{project.description}</p>
+            
+            <div class="project-tags">
+              {project.tags.map(tag => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+            
+            <div class="project-links">
+              <a href={project.link} class="btn btn-primary">
+                📄 Article détaillé
+              </a>
+              {project.github && (
+                <a href={project.github} target="_blank" rel="noopener" class="btn btn-outline">
+                  GitHub
+                </a>
+              )}
+              {project.demo && (
+                <a href={project.demo} target="_blank" rel="noopener" class="btn btn-outline">
+                  🌐 Démo
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </section>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<style>
+  .projects-page {
+    padding: var(--space-3xl) 0;
+    min-height: 100vh;
+  }
+  
+  /* Hero */
+  .projects-hero {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+    border-bottom: 2px solid var(--color-border);
+  }
+  
+  .projects-hero h1 {
+    font-size: 3rem;
+    margin-bottom: var(--space-lg);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    max-width: 800px;
+    margin: 0 auto var(--space-2xl);
+    line-height: 1.6;
+  }
+  
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3xl);
+    margin-top: var(--space-2xl);
+  }
+  
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-sm);
+  }
+  
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: var(--space-xl);
+  }
+  
+  .project-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    border: 2px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .project-card:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px);
+    border-color: var(--color-accent);
+  }
+  
+  .project-card.featured {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    border-color: var(--color-accent);
+  }
+  
+  .featured-badge {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    background: var(--color-accent);
+    color: white;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-lg);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .project-header {
+    margin-bottom: var(--space-md);
+  }
+  
+  .category-badge {
+    display: inline-block;
+    background: var(--color-bg-tertiary);
+    color: var(--color-text);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: var(--space-md);
+  }
+  
+  .project-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .project-card h2 a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .project-card h2 a:hover {
+    color: var(--color-accent);
+  }
+  
+  .project-description {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+    flex-grow: 1;
+  }
+  
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .project-links {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+  
+  .project-links .btn {
+    flex: 1;
+    text-align: center;
+    min-width: 120px;
+  }
+  
+  .btn-primary {
+    background: var(--color-accent);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .projects-hero h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-description {
+      font-size: 1.1rem;
+    }
+    
+    .hero-stats {
+      gap: var(--space-xl);
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+    }
+    
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .project-links {
+      flex-direction: column;
+    }
+    
+    .project-links .btn {
+      width: 100%;
+    }
+  }
+</style>

@@ -1,0 +1,176 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="main-footer">
+  <div class="container footer-content">
+    <div class="footer-section">
+      <h3>Espérance AYIWAHOUN</h3>
+      <p>Étudiant en Systèmes Embarqués & IoT</p>
+      <p>Passionné par l'IA, la Robotique et l'Innovation</p>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Navigation</h4>
+      <ul class="footer-links">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/about">À propos</a></li>
+        <li><a href="/projects">Projets</a></li>
+        <li><a href="/blog">Articles</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Contact & Social</h4>
+      <ul class="footer-links">
+        <li>
+          <a href="https://github.com/TitanSage02" target="_blank" rel="noopener">
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://linkedin.com/in/esperance-ayiwahoun" target="_blank" rel="noopener">
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="mailto:eayiwahoun@gmail.com">
+            eayiwahoun@gmail.com
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© {currentYear} Espérance AYIWAHOUN. Tous droits réservés.</p>
+      <p class="footer-tech">Construit avec 💚 et Astro</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .main-footer {
+    background: var(--gradient-hero);
+    color: white;
+    padding: var(--space-3xl) 0 var(--space-lg);
+    margin-top: var(--space-3xl);
+    border-top: 3px solid var(--color-accent);
+    position: relative;
+  }
+  
+  .main-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gradient-accent);
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .footer-section h3 {
+    color: white;
+    margin-bottom: var(--space-md);
+    font-size: 1.5rem;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .footer-section h4 {
+    color: var(--color-accent-light);
+    margin-bottom: var(--space-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .footer-section p {
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: var(--space-sm);
+    line-height: 1.6;
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: var(--space-sm);
+  }
+  
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    position: relative;
+    padding-left: var(--space-md);
+  }
+  
+  .footer-links a::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all var(--transition-fast);
+    color: var(--color-accent);
+  }
+  
+  .footer-links a:hover::before {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .footer-links a:hover {
+    color: var(--color-accent-light);
+    padding-left: var(--space-lg);
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: var(--space-lg);
+    text-align: center;
+    background: rgba(15, 23, 42, 0.3);
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+  }
+  
+  .footer-bottom p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .footer-tech {
+    font-size: 0.875rem;
+    color: var(--color-accent-light);
+  }
+  }
+  
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      text-align: center;
+    }
+    
+    .footer-links a:hover {
+      transform: translateX(0);
+    }
+  }
+</style>

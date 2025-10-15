@@ -1,0 +1,238 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    date: string;
+    tags: string[];
+    category: string;
+    image?: string;
+    author?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+const { title, description, date, tags, category, image, author = "Espérance AYIWAHOUN" } = frontmatter;
+
+// Format date
+const formattedDate = new Date(date).toLocaleDateString('fr-FR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<BaseLayout title={`${title} | Blog`} description={description}>
+  <Header />
+  
+  <article class="blog-post">
+    <div class="container-narrow">
+      <!-- Article Header -->
+      <header class="article-header">
+        <div class="article-meta">
+          <span class="category-badge">{category}</span>
+          <time datetime={date}>{formattedDate}</time>
+        </div>
+        
+        <h1 class="article-title">{title}</h1>
+        
+        <p class="article-description">{description}</p>
+        
+        <div class="article-tags">
+          {tags.map(tag => (
+            <a href={`/blog?tag=${tag}`} class="tag">#{tag}</a>
+          ))}
+        </div>
+        
+        <div class="article-author">
+          <span>Par <strong>{author}</strong></span>
+        </div>
+      </header>
+      
+      <!-- Featured Image -->
+      {image && (
+        <div class="article-image">
+          <img src={image} alt={title} />
+        </div>
+      )}
+      
+      <!-- Article Content -->
+      <div class="article-content prose">
+        <slot />
+      </div>
+      
+      <!-- Article Footer -->
+      <footer class="article-footer">
+        <div class="article-nav">
+          <a href="/blog" class="btn btn-outline">← Retour aux articles</a>
+          <a href="/projects" class="btn">Voir les projets →</a>
+        </div>
+      </footer>
+    </div>
+  </article>
+  
+  <Footer />
+</BaseLayout>
+
+<style>
+  .blog-post {
+    padding: var(--space-3xl) 0;
+    min-height: 100vh;
+  }
+  
+  /* Article Header */
+  .article-header {
+    margin-bottom: var(--space-3xl);
+    text-align: center;
+    padding-bottom: var(--space-2xl);
+    border-bottom: 2px solid var(--color-border);
+  }
+  
+  .article-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+  
+  .category-badge {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+    color: white;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .article-title {
+    font-size: 2.75rem;
+    margin-bottom: var(--space-lg);
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .article-description {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .article-author {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+  }
+  
+  /* Article Image */
+  .article-image {
+    margin-bottom: var(--space-3xl);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .article-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+  }
+  
+  /* Article Content */
+  .article-content {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: var(--space-3xl);
+  }
+  
+  .prose :global(h2) {
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .prose :global(h2:first-child) {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  .prose :global(img) {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .prose :global(a) {
+    color: var(--color-accent);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    transition: all var(--transition-fast);
+  }
+  
+  .prose :global(a:hover) {
+    color: var(--color-accent-hover);
+    text-decoration-thickness: 3px;
+  }
+  
+  /* Article Footer */
+  .article-footer {
+    padding-top: var(--space-2xl);
+    border-top: 2px solid var(--color-border);
+  }
+  
+  .article-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .article-title {
+      font-size: 2rem;
+    }
+    
+    .article-description {
+      font-size: 1.1rem;
+    }
+    
+    .article-content {
+      font-size: 1rem;
+    }
+    
+    .article-nav {
+      flex-direction: column;
+    }
+    
+    .article-nav .btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>

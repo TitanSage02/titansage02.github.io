@@ -1,0 +1,434 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+// Get all blog posts
+const allPosts = await Astro.glob('./*.md');
+
+// Sort by date (newest first)
+const sortedPosts = allPosts.sort((a, b) => {
+  return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
+});
+
+// Extract unique categories and tags
+const categories = [...new Set(allPosts.map(post => post.frontmatter.category))];
+const allTags = allPosts.flatMap(post => post.frontmatter.tags || []);
+const uniqueTags = [...new Set(allTags)];
+
+// Get selected filter from URL
+const url = new URL(Astro.request.url);
+const selectedTag = url.searchParams.get('tag');
+const selectedCategory = url.searchParams.get('category');
+
+// Filter posts
+let filteredPosts = sortedPosts;
+if (selectedTag) {
+  filteredPosts = filteredPosts.filter(post => 
+    post.frontmatter.tags?.includes(selectedTag)
+  );
+}
+if (selectedCategory) {
+  filteredPosts = filteredPosts.filter(post => 
+    post.frontmatter.category === selectedCategory
+  );
+}
+
+// Format date helper
+const formatDate = (date: string) => {
+  return new Date(date).toLocaleDateString('fr-FR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+---
+
+<BaseLayout 
+  title="Articles Scientifiques | Espérance AYIWAHOUN" 
+  description="Découvrez mes articles techniques sur l'IA, la robotique, les systèmes embarqués et l'innovation technologique."
+>
+  <Header />
+  
+  <main class="blog-index">
+    <div class="container">
+      <!-- Hero Section -->
+      <section class="blog-hero">
+        <h1>📚 Articles Scientifiques & Techniques</h1>
+        <p class="hero-description">
+          Découvrez mes recherches, analyses techniques et retours d'expérience sur mes projets en IA, robotique et systèmes embarqués.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">{allPosts.length}</span>
+            <span class="stat-label">Articles</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">{categories.length}</span>
+            <span class="stat-label">Catégories</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">{uniqueTags.length}</span>
+            <span class="stat-label">Tags</span>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Filters -->
+      <section class="filters">
+        <div class="filter-group">
+          <h3>Catégories</h3>
+          <div class="filter-buttons">
+            <a href="/blog" class:list={['filter-btn', { active: !selectedCategory }]}>
+              Toutes
+            </a>
+            {categories.map(cat => (
+              <a 
+                href={`/blog?category=${cat}`} 
+                class:list={['filter-btn', { active: selectedCategory === cat }]}
+              >
+                {cat}
+              </a>
+            ))}
+          </div>
+        </div>
+        
+        <div class="filter-group">
+          <h3>Tags populaires</h3>
+          <div class="filter-tags">
+            {uniqueTags.slice(0, 10).map(tag => (
+              <a 
+                href={`/blog?tag=${tag}`} 
+                class:list={['tag', { active: selectedTag === tag }]}
+              >
+                #{tag}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <!-- Active Filters -->
+      {(selectedTag || selectedCategory) && (
+        <div class="active-filters">
+          <span>Filtres actifs :</span>
+          {selectedCategory && (
+            <span class="active-filter">
+              Catégorie: {selectedCategory}
+              <a href="/blog">×</a>
+            </span>
+          )}
+          {selectedTag && (
+            <span class="active-filter">
+              Tag: #{selectedTag}
+              <a href="/blog">×</a>
+            </span>
+          )}
+        </div>
+      )}
+      
+      <!-- Articles Grid -->
+      <section class="articles-grid">
+        {filteredPosts.length === 0 ? (
+          <div class="no-results">
+            <h3>Aucun article trouvé</h3>
+            <p>Essayez de modifier vos filtres.</p>
+            <a href="/blog" class="btn">Réinitialiser les filtres</a>
+          </div>
+        ) : (
+          filteredPosts.map(post => (
+            <article class="article-card">
+              <div class="card-header">
+                <span class="category-badge">{post.frontmatter.category}</span>
+                <time datetime={post.frontmatter.date}>
+                  {formatDate(post.frontmatter.date)}
+                </time>
+              </div>
+              
+              <h2 class="card-title">
+                <a href={post.url}>{post.frontmatter.title}</a>
+              </h2>
+              
+              <p class="card-description">{post.frontmatter.description}</p>
+              
+              <div class="card-tags">
+                {post.frontmatter.tags?.slice(0, 4).map(tag => (
+                  <a href={`/blog?tag=${tag}`} class="tag">#{tag}</a>
+                ))}
+              </div>
+              
+              <a href={post.url} class="read-more">
+                Lire l'article →
+              </a>
+            </article>
+          ))
+        )}
+      </section>
+    </div>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<style>
+  .blog-index {
+    padding: var(--space-3xl) 0;
+    min-height: 100vh;
+  }
+  
+  /* Hero Section */
+  .blog-hero {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+    padding-bottom: var(--space-3xl);
+    border-bottom: 2px solid var(--color-border);
+  }
+  
+  .blog-hero h1 {
+    font-size: 3rem;
+    margin-bottom: var(--space-lg);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero-description {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto var(--space-2xl);
+  }
+  
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3xl);
+    margin-top: var(--space-2xl);
+  }
+  
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: var(--space-sm);
+  }
+  
+  /* Filters */
+  .filters {
+    margin-bottom: var(--space-3xl);
+  }
+  
+  .filter-group {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .filter-group h3 {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
+  }
+  
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+  
+  .filter-btn {
+    padding: var(--space-sm) var(--space-lg);
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    border: 2px solid transparent;
+  }
+  
+  .filter-btn:hover,
+  .filter-btn.active {
+    background-color: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+  
+  .filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+  
+  .tag.active {
+    background-color: var(--color-accent);
+    color: white;
+  }
+  
+  /* Active Filters */
+  .active-filters {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+    padding: var(--space-md);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-accent);
+  }
+  
+  .active-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-md);
+    background-color: white;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .active-filter a {
+    color: var(--color-text-muted);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+  
+  .active-filter a:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  
+  /* Articles Grid */
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-xl);
+  }
+  
+  .article-card {
+    background-color: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .article-card:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+  }
+  
+  .card-header time {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+  }
+  
+  .card-title a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .card-title a:hover {
+    color: var(--color-accent);
+  }
+  
+  .card-description {
+    color: var(--color-text-light);
+    margin-bottom: var(--space-lg);
+    flex-grow: 1;
+    line-height: 1.6;
+  }
+  
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .read-more {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .read-more:hover {
+    color: var(--color-accent-hover);
+    transform: translateX(4px);
+  }
+  
+  /* No Results */
+  .no-results {
+    text-align: center;
+    padding: var(--space-3xl);
+    grid-column: 1 / -1;
+  }
+  
+  .no-results h3 {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .blog-hero h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-stats {
+      gap: var(--space-xl);
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+    }
+    
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .filter-buttons {
+      flex-direction: column;
+    }
+    
+    .filter-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>

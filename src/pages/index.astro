@@ -1,0 +1,576 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Espérance AYIWAHOUN — IA, Robotique & Systèmes Embarqués">
+  <Header />
+  
+  <main class="home-page">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Bienvenue 👋
+          </h1>
+          <p class="hero-subtitle">
+            Je suis <strong>Espérance AYIWAHOUN</strong>, étudiant passionné par 
+            <span class="highlight">l'intelligence artificielle</span>, 
+            <span class="highlight">la robotique</span> et 
+            <span class="highlight">les systèmes embarqués</span>.
+          </p>
+          <p class="hero-description">
+            Top 3 de ma promotion en Systèmes Embarqués et IoT à l'Université d'Abomey-Calavi (Bénin), 
+            je développe des solutions innovantes mêlant IA, vision par ordinateur et robotique éducative.
+          </p>
+          
+          <div class="hero-cta">
+            <a href="/projects" class="btn btn-primary">
+              🚀 Découvrir mes projets
+            </a>
+            <a href="/blog" class="btn btn-outline">
+              📚 Lire mes articles
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Featured Projects -->
+    <section class="featured-section">
+      <div class="container">
+        <h2 class="section-title">🌟 Projets Phares</h2>
+        
+        <div class="projects-grid">
+          <div class="project-card featured">
+            <div class="project-header">
+              <span class="project-badge">IA & Recherche Spatiale</span>
+              <h3>BioStar</h3>
+            </div>
+            <p class="project-desc">
+              Plateforme IA utilisant RAG (Mistral AI + FAISS) pour démocratiser l'accès aux 
+              publications scientifiques de la NASA sur la biologie spatiale.
+            </p>
+            <div class="project-tags">
+              <span class="tag">RAG</span>
+              <span class="tag">Mistral AI</span>
+              <span class="tag">FAISS</span>
+              <span class="tag">Next.js</span>
+            </div>
+            <a href="/blog/biostar" class="project-link">En savoir plus →</a>
+          </div>
+          
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-badge">Robotique & NLP</span>
+              <h3>VoxThymio</h3>
+            </div>
+            <p class="project-desc">
+              Système de contrôle vocal intelligent pour robots Thymio utilisant Whisper, BERT 
+              et apprentissage dynamique de commandes.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Whisper</span>
+              <span class="tag">NLP</span>
+              <span class="tag">ChromaDB</span>
+            </div>
+            <a href="/blog/voxthymio" class="project-link">En savoir plus →</a>
+          </div>
+          
+          <div class="project-card">
+            <div class="project-header">
+              <span class="project-badge">IoT & Biométrie</span>
+              <h3>CREC Presence</h3>
+            </div>
+            <p class="project-desc">
+              Système AIoT de pointage sécurisé combinant reconnaissance faciale (InsightFace) 
+              et RFID pour une authentification anti-fraude.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Edge Computing</span>
+              <span class="tag">MQTT</span>
+              <span class="tag">Raspberry Pi</span>
+            </div>
+            <a href="/blog/crec-presence" class="project-link">En savoir plus →</a>
+          </div>
+        </div>
+        
+        <div class="section-cta">
+          <a href="/projects" class="btn">Voir tous les projets →</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Expertise Section -->
+    <section class="expertise-section">
+      <div class="container">
+        <h2 class="section-title">💡 Domaines d'Expertise</h2>
+        
+        <div class="expertise-grid">
+          <div class="expertise-card">
+            <div class="expertise-icon">🤖</div>
+            <h3>Intelligence Artificielle</h3>
+            <p>RAG, NLP, Computer Vision, LLMs (GPT, Mistral, Gemini)</p>
+          </div>
+          
+          <div class="expertise-card">
+            <div class="expertise-icon">🔧</div>
+            <h3>Systèmes Embarqués</h3>
+            <p>Raspberry Pi, ESP32, Arduino, IoT, Edge Computing</p>
+          </div>
+          
+          <div class="expertise-card">
+            <div class="expertise-icon">👁️</div>
+            <h3>Vision par Ordinateur</h3>
+            <p>OpenCV, MediaPipe, InsightFace, Détection d'objets</p>
+          </div>
+          
+          <div class="expertise-card">
+            <div class="expertise-icon">🌐</div>
+            <h3>Développement Web</h3>
+            <p>React, Next.js, FastAPI, Astro, Node.js</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Latest Articles -->
+    <section class="articles-section">
+      <div class="container">
+        <h2 class="section-title">📝 Derniers Articles</h2>
+        
+        <div class="articles-preview">
+          <div class="article-preview">
+            <span class="article-date">01 Oct 2025</span>
+            <h3><a href="/blog/biostar">BioStar : Plateforme IA pour la Recherche Spatiale</a></h3>
+            <p>Architecture RAG complète avec Mistral AI et FAISS...</p>
+          </div>
+          
+          <div class="article-preview">
+            <span class="article-date">15 Sep 2025</span>
+            <h3><a href="/blog/voxthymio">VoxThymio : Contrôle Vocal Intelligent</a></h3>
+            <p>Système de reconnaissance vocale et compréhension sémantique...</p>
+          </div>
+          
+          <div class="article-preview">
+            <span class="article-date">20 Août 2025</span>
+            <h3><a href="/blog/crec-presence">CREC Presence : Authentification Biométrique</a></h3>
+            <p>Solution AIoT combinant reconnaissance faciale et RFID...</p>
+          </div>
+        </div>
+        
+        <div class="section-cta">
+          <a href="/blog" class="btn">Lire tous les articles →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<style>
+  .home-page {
+    min-height: 100vh;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: var(--gradient-hero);
+    color: white;
+    padding: calc(var(--space-3xl) * 1.5) 0;
+    text-align: center;
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    animation: pulse 15s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  
+  .hero-title {
+    font-size: 4rem;
+    margin-bottom: var(--space-lg);
+    animation: fadeInUp 0.6s ease-out;
+    background: linear-gradient(135deg, #ffffff 0%, var(--color-accent-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-xl);
+    line-height: 1.6;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 0.8s ease-out;
+    position: relative;
+  }
+  
+  .highlight {
+    color: var(--color-accent-light);
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+  }
+  
+  .hero-description {
+    font-size: 1.125rem;
+    max-width: 750px;
+    margin: 0 auto var(--space-2xl);
+    opacity: 0.95;
+    line-height: 1.8;
+    animation: fadeInUp 1s ease-out;
+    position: relative;
+  }
+  
+  .hero-cta {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1.2s ease-out;
+    position: relative;
+  }
+  
+  .btn-primary {
+    background: var(--gradient-accent);
+    color: white;
+    box-shadow: var(--shadow-accent);
+  }
+  
+  .btn-primary:hover {
+    box-shadow: var(--shadow-accent-hover);
+    transform: translateY(-3px) scale(1.05);
+  }
+  
+  /* Sections */
+  .featured-section,
+  .expertise-section,
+  .articles-section {
+    padding: var(--space-3xl) 0;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: var(--space-3xl);
+    color: var(--color-primary);
+  }
+  
+  .section-cta {
+    text-align: center;
+    margin-top: var(--space-3xl);
+  }
+  
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .project-card {
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+    border: 2px solid var(--color-border-light);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-normal);
+  }
+  
+  .project-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .project-card:hover {
+    box-shadow: var(--shadow-2xl);
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--color-accent);
+  }
+  
+  .project-card.featured {
+    background: linear-gradient(145deg, #ecfeff 0%, #cffafe 100%);
+    border: 2px solid var(--color-accent-light);
+    box-shadow: var(--shadow-accent);
+  }
+  
+  .project-card.featured:hover {
+    box-shadow: var(--shadow-accent-hover);
+  }
+  }
+  
+  .project-header {
+    margin-bottom: var(--space-md);
+  }
+  
+  .project-badge {
+    display: inline-block;
+    background: var(--gradient-accent);
+    color: white;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: var(--space-sm);
+    box-shadow: var(--shadow-accent);
+    letter-spacing: 0.05em;
+  }
+  
+  .project-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+  }
+  
+  .project-desc {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .project-link {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+  
+  .project-link:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+  
+  /* Expertise Grid */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+  }
+  
+  .expertise-card {
+    text-align: center;
+    padding: var(--space-2xl);
+    background: var(--gradient-card);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    border: 2px solid var(--color-border-light);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .expertise-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--color-accent-light) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+  }
+  
+  .expertise-card:hover::before {
+    opacity: 0.1;
+  }
+  
+  .expertise-card:hover {
+    box-shadow: var(--shadow-accent);
+    transform: translateY(-8px) scale(1.03);
+    border-color: var(--color-accent-light);
+  }
+  
+  .expertise-icon {
+    font-size: 3.5rem;
+    margin-bottom: var(--space-lg);
+    filter: drop-shadow(0 4px 8px rgba(6, 182, 212, 0.3));
+    transition: transform var(--transition-normal);
+  }
+  
+  .expertise-card:hover .expertise-icon {
+    transform: scale(1.15) rotate(5deg);
+  }
+  
+  .expertise-card h3 {
+    font-size: 1.35rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    color: var(--color-primary);
+  }
+  
+  .expertise-card p {
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+  
+  /* Articles Preview */
+  .articles-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-xl);
+  }
+  
+  .article-preview {
+    padding: var(--space-xl);
+    background: var(--gradient-card);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-accent);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .article-preview::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, var(--color-accent-light) 0%, transparent 70%);
+    opacity: 0.15;
+    transition: all var(--transition-normal);
+  }
+  
+  .article-preview:hover::before {
+    width: 150px;
+    height: 150px;
+    opacity: 0.25;
+  }
+  
+  .article-preview:hover {
+    box-shadow: var(--shadow-accent);
+    transform: translateX(8px) translateY(-4px);
+    border-left-width: 6px;
+    border-color: var(--color-accent-light);
+  }
+  
+  .article-date {
+    font-size: 0.8125rem;
+    color: var(--color-accent-dark);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  
+  .article-preview h3 {
+    font-size: 1.25rem;
+    margin: var(--space-md) 0;
+  }
+  
+  .article-preview h3 a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  .article-preview h3 a:hover {
+    color: var(--color-accent);
+  }
+  
+  .article-preview p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+  }
+  
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.25rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+    
+    .hero-description {
+      font-size: 1rem;
+    }
+    
+    .hero-cta {
+      flex-direction: column;
+    }
+    
+    .hero-cta .btn {
+      width: 100%;
+    }
+    
+    .projects-grid,
+    .expertise-grid,
+    .articles-preview {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+  }
+</style>
