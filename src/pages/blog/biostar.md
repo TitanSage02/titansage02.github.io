@@ -302,7 +302,7 @@ def fallback_search(query: str, documents: list):
 ## 📄 Licence et Remerciements
 
 **Licence :** MIT  
-**Équipe :** Team BioStar  
+**Équipe :** Team BioStar sous le leadership de Espérance AYIWAHOUN  
 **Challenge :** NASA Space Apps Challenge 2025
 
 **Remerciements :**
