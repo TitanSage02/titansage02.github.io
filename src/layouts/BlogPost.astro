@@ -24,7 +24,15 @@ import BaseLayout from './BaseLayout.astro';
     
     <div class="toc-content">
       <div class="toc-header">
-        <h3>Sommaire</h3>
+        <div class="toc-title-row">
+          <h3>Sommaire</h3>
+          <button class="toc-hide-btn" id="toc-hide-btn" title="Masquer définitivement la sidebar">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6L6 18"/>
+              <path d="M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
         <div class="reading-progress">
           <div class="progress-bar" id="progress-bar"></div>
           <span class="progress-text" id="progress-text">0%</span>
@@ -55,6 +63,18 @@ import BaseLayout from './BaseLayout.astro';
       </div>
     </div>
   </aside>
+
+  <!-- Floating TOC Toggle (when sidebar is hidden) -->
+  <button class="toc-show-btn" id="toc-show-btn" title="Afficher le sommaire">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="8" y1="6" x2="21" y2="6"/>
+      <line x1="8" y1="12" x2="21" y2="12"/>
+      <line x1="8" y1="18" x2="21" y2="18"/>
+      <line x1="3" y1="6" x2="3.01" y2="6"/>
+      <line x1="3" y1="12" x2="3.01" y2="12"/>
+      <line x1="3" y1="18" x2="3.01" y2="18"/>
+    </svg>
+  </button>
 
   <article class="blog-post">
     <div class="container">
@@ -98,22 +118,43 @@ import BaseLayout from './BaseLayout.astro';
   let isAutoScrolling = false;
   let tocSidebar;
   let tocToggle;
+  let tocHideBtn;
+  let tocShowBtn;
+  let isSidebarHidden = false;
   
   function initializeTOC() {
     tocSidebar = document.getElementById('toc-sidebar');
     tocToggle = document.getElementById('toc-toggle');
+    tocHideBtn = document.getElementById('toc-hide-btn');
+    tocShowBtn = document.getElementById('toc-show-btn');
     
     if (!tocSidebar || !tocToggle) return;
     
-    // Toggle functionality
+    // Toggle functionality (collapse/expand)
     tocToggle.addEventListener('click', () => {
-      tocSidebar.classList.toggle('open');
-      localStorage.setItem('toc-open', tocSidebar.classList.contains('open'));
+      if (!isSidebarHidden) {
+        tocSidebar.classList.toggle('open');
+        localStorage.setItem('toc-open', tocSidebar.classList.contains('open'));
+      }
+    });
+    
+    // Hide functionality (complete removal)
+    tocHideBtn?.addEventListener('click', () => {
+      hideSidebar();
+    });
+    
+    // Show functionality (restore sidebar)
+    tocShowBtn?.addEventListener('click', () => {
+      showSidebar();
     });
     
     // Restore previous state
     const savedState = localStorage.getItem('toc-open');
-    if (savedState === 'true' || window.innerWidth >= 1200) {
+    const hiddenState = localStorage.getItem('toc-hidden');
+    
+    if (hiddenState === 'true') {
+      hideSidebar();
+    } else if (savedState === 'true' || window.innerWidth >= 1200) {
       tocSidebar.classList.add('open');
     }
     
@@ -131,6 +172,43 @@ import BaseLayout from './BaseLayout.astro';
     
     generateTOC();
     updateReadingStats();
+  }
+  
+  function hideSidebar() {
+    isSidebarHidden = true;
+    tocSidebar.classList.add('hidden');
+    tocSidebar.classList.remove('open');
+    tocShowBtn.classList.add('visible');
+    
+    // Adjust main content margin
+    const blogPost = document.querySelector('.blog-post');
+    if (blogPost) {
+      blogPost.style.marginLeft = '0';
+    }
+    
+    localStorage.setItem('toc-hidden', 'true');
+  }
+  
+  function showSidebar() {
+    isSidebarHidden = false;
+    tocSidebar.classList.remove('hidden');
+    tocShowBtn.classList.remove('visible');
+    
+    // Restore sidebar state
+    const savedState = localStorage.getItem('toc-open');
+    if (savedState === 'true' || window.innerWidth >= 1200) {
+      tocSidebar.classList.add('open');
+    }
+    
+    // Restore main content margin on desktop
+    if (window.innerWidth >= 1200) {
+      const blogPost = document.querySelector('.blog-post');
+      if (blogPost) {
+        blogPost.style.marginLeft = '300px';
+      }
+    }
+    
+    localStorage.setItem('toc-hidden', 'false');
   }
   
   function generateTOC() {
@@ -285,11 +363,20 @@ import BaseLayout from './BaseLayout.astro';
   }
   
   function handleResize() {
-    if (!tocSidebar) return;
+    if (!tocSidebar || isSidebarHidden) return;
     
     // Auto-open on desktop
     if (window.innerWidth >= 1200) {
       tocSidebar.classList.add('open');
+      const blogPost = document.querySelector('.blog-post');
+      if (blogPost) {
+        blogPost.style.marginLeft = '300px';
+      }
+    } else {
+      const blogPost = document.querySelector('.blog-post');
+      if (blogPost) {
+        blogPost.style.marginLeft = '0';
+      }
     }
     
     // Recalculate positions
@@ -329,6 +416,13 @@ import BaseLayout from './BaseLayout.astro';
     left: 0;
   }
   
+  .toc-sidebar.hidden {
+    left: -280px !important;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50px);
+  }
+  
   .toc-toggle {
     position: absolute;
     right: -45px;
@@ -346,6 +440,11 @@ import BaseLayout from './BaseLayout.astro';
     transition: all 0.3s ease;
     box-shadow: var(--shadow-lg);
     z-index: 101;
+  }
+  
+  .toc-sidebar.hidden .toc-toggle {
+    opacity: 0;
+    pointer-events: none;
   }
   
   .toc-toggle:hover {
@@ -384,6 +483,70 @@ import BaseLayout from './BaseLayout.astro';
     display: flex;
     align-items: center;
     gap: var(--space-sm);
+  }
+  
+  .toc-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+  }
+  
+  .toc-title-row h3 {
+    margin: 0;
+  }
+  
+  .toc-hide-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: var(--space-xs);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .toc-hide-btn:hover {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text);
+  }
+  
+  .toc-show-btn {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-xl);
+    z-index: 102;
+    transition: all 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%) translateX(-100px);
+  }
+  
+  .toc-show-btn.visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(-50%) translateX(0);
+  }
+  
+  .toc-show-btn:hover {
+    background: var(--color-accent);
+    transform: translateY(-50%) translateX(5px);
+    box-shadow: var(--shadow-2xl);
   }
   
   .toc-header h3::before {
@@ -700,11 +863,21 @@ import BaseLayout from './BaseLayout.astro';
       border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
     }
     
+    .toc-sidebar.hidden {
+      left: -90% !important;
+    }
+    
     .toc-toggle {
       right: -55px;
       width: 55px;
       height: 55px;
       border-radius: 0 30px 30px 0;
+    }
+    
+    .toc-show-btn {
+      width: 45px;
+      height: 45px;
+      left: 15px;
     }
     
     .blog-post {
