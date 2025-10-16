@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogPost.astro
-title: "RevealMe : Framework OSINT d'Analyse d'Empreinte Numérique avec IA"
+title: "RevealMe : Framework OSINT d'analyse d'empreinte numérique avec IA"
 description: "Outil OSINT intelligent utilisant GPT-o1 et agents spécialisés pour découvrir et analyser l'empreinte numérique publique d'individus sur Internet."
 date: "2025-06-25"
 category: "Cybersécurité & OSINT"
@@ -8,20 +8,22 @@ tags: ["OSINT", "GPT-o1", "Privacy", "Web Scraping", "Agents", "Streamlit", "Dig
 author: "Espérance AYIWAHOUN"
 ---
 
-## 🕵️ Introduction
+## Prendre conscience de notre empreinte numérique
 
-**RevealMe** est un framework **OSINT (Open Source Intelligence)** qui permet aux utilisateurs de découvrir et analyser les informations publiques disponibles à leur sujet sur Internet. Utilisant des **agents IA spécialisés** et le modèle **GPT-o1** d'OpenAI, RevealMe offre une vision complète de son empreinte numérique.
+"Googlez-vous régulièrement ?" Cette question, je la pose souvent autour de moi, et les réponses sont surprenantes. La plupart des gens n'ont aucune idée de ce qui est accessible publiquement à leur sujet sur Internet.
 
-**🔗 Démo en ligne :** [revealme.streamlit.app](https://revealme.streamlit.app)  
-**📦 Code source :** [GitHub - RevealMe](https://github.com/TitanSage02/RevealMe)
+En tant que passionné de cybersécurité, j'ai été interpellé par cette méconnaissance généralisée de notre empreinte numérique. Nos données personnelles sont éparpillées aux quatre vents du web : réseaux sociaux, forums, fuites de données, achats en ligne...
+
+**RevealMe** est né de ce constat : nous avons besoin d'un outil pour **voir ce que les autres voient** quand ils enquêtent sur nous. Un miroir numérique qui révèle l'étendue de nos traces en ligne.
+
+**Démo en ligne :** [revealme.streamlit.app](https://revealme.streamlit.app)  
+**Code source :** [GitHub - RevealMe](https://github.com/TitanSage02/RevealMe)
 
 ---
 
-## 📋 Problématique
+## L'invisible empreinte numérique
 
-### L'Empreinte Numérique Invisible
-
-Chaque individu laisse des **traces numériques** sur Internet :
+En développant RevealMe, j'ai pris conscience de l'ampleur de nos traces numériques :
 - Profils réseaux sociaux (Facebook, LinkedIn, Twitter)
 - Contributions open source (GitHub, Stack Overflow)
 - Données de violation (haveibeenpwned, data breaches)
@@ -568,31 +570,31 @@ def detect_inconsistencies(results: list) -> list:
 
 ---
 
-## 🔮 Perspectives d'Amélioration
+---
 
-### Court Terme
-- [ ] Support de plus de réseaux sociaux (TikTok, Snapchat)
-- [ ] Export PDF des rapports
-- [ ] Timeline visuelle de l'activité en ligne
+## Perspectives d'amélioration
 
-### Moyen Terme
-- [ ] Monitoring continu (alertes sur nouvelles données)
-- [ ] Analyse de sentiment (réputation en ligne)
-- [ ] Graphe de relations (network analysis)
+### Court terme
+- Support de plus de réseaux sociaux (TikTok, Snapchat)
+- Export PDF des rapports
+- Timeline visuelle de l'activité en ligne
 
-### Long Terme
-- [ ] IA pour détection de deepfakes
-- [ ] Recommandations automatiques de nettoyage
-- [ ] API publique pour développeurs
+### Moyen terme
+- Monitoring continu (alertes sur nouvelles données)
+- Analyse de sentiment (réputation en ligne)
+- Graphe de relations (network analysis)
+
+### Long terme
+- IA pour détection de deepfakes
+- Recommandations automatiques de nettoyage
+- API publique pour développeurs
 
 ---
 
-## 📚 Références
+## Références
 
 1. Bazzell, M. (2021). "Open Source Intelligence Techniques". *IntelTechniques*.
 2. OpenAI. (2023). "GPT-4 Technical Report". *arXiv*.
 3. GDPR. (2018). "General Data Protection Regulation". *EU*.
 
----
-
-**🌟 Impact :** RevealMe sensibilise les utilisateurs à leur empreinte numérique et les aide à reprendre le contrôle de leur vie privée en ligne.
+**RevealMe représente ma contribution à la sensibilisation sur la vie privée numérique, aidant chacun à reprendre le contrôle de son empreinte en ligne.**

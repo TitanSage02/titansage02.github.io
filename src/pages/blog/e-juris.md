@@ -1,26 +1,28 @@
 ---
 layout: ../../layouts/BlogPost.astro
-title: "e-Juris : Assistant Juridique IA pour le Code du Numérique"
-description: "Système RAG intelligent utilisant Gemini Pro et FAISS pour répondre aux questions juridiques basées sur le Code du Numérique béninois."
+title: "e-Juris : Assistant juridique IA pour le code du numérique"
+description: "Système RAG intelligent utilisant Gemini Pro pour répondre aux questions juridiques basées sur le Code du Numérique béninois."
 date: "2025-05-30"
 category: "IA & Droit"
 tags: ["RAG", "Legal Tech", "Gemini Pro", "FAISS", "Langchain", "Streamlit", "NLP"]
 author: "Espérance AYIWAHOUN"
 ---
 
-## ⚖️ Introduction
+## Démocratiser l'accès au droit béninois
 
-**e-Juris** est un assistant juridique intelligent qui utilise la technique **RAG (Retrieval Augmented Generation)** pour répondre aux questions juridiques en s'appuyant sur le **Code du Numérique** et autres documents légaux officiels. Développé avec Streamlit et Langchain, il rend le droit accessible à tous.
+En tant que citoyen béninois passionné de technologie, j'ai toujours été frappé par l'inaccessibilité du droit dans notre pays. Combien de fois ai-je vu des entrepreneurs, des étudiants, ou de simples citoyens se perdre dans les méandres juridiques faute d'informations claires et accessibles ?
 
-**📦 Code source :** [GitHub - e-Juris](https://github.com/TiTanSage02/eJuris)
+Le **Code du Numérique** béninois, avec ses plus de 200 pages de textes complexes, est un parfait exemple de cette problématique. Comment un développeur peut-il savoir s'il respecte la loi sur la protection des données sans passer par un avocat coûteux ?
+
+C'est ainsi qu'est né **e-Juris** : un assistant juridique intelligent qui utilise l'IA pour rendre le droit accessible à tous les Béninois.
+
+**Code source :** [GitHub - e-Juris](https://github.com/TiTanSage02/eJuris)
 
 ---
 
-## 📋 Problématique
+## Le constat qui m'a motivé
 
-### Accessibilité du Droit au Bénin
-
-Le système juridique béninois présente des défis d'accessibilité :
+En observant l'écosystème juridique béninois, j'ai identifié plusieurs barrières majeures :
 
 | Problème | Impact |
 |----------|--------|
@@ -331,7 +333,7 @@ llm = GooglePalm(temperature=0.2)
 
 ---
 
-## 🚀 Déploiement
+## Déploiement
 
 ```bash
 # Installation
@@ -348,13 +350,11 @@ streamlit run main.py
 
 ---
 
-## 🔮 Perspectives
+## Perspectives d'évolution
 
-- [ ] Support de plusieurs codes (Pénal, Civil, Commerce)
-- [ ] Comparaison de jurisprudences
-- [ ] Export de consultations en PDF
-- [ ] Multi-langue (Fon, Yoruba)
+- Support de plusieurs codes (Pénal, Civil, Commerce)
+- Comparaison de jurisprudences
+- Export de consultations en PDF
+- Multi-langue (Fon, Yoruba)
 
----
-
-**🌟 Impact :** Démocratisation de l'accès au droit au Bénin via l'IA.
+**e-Juris représente ma contribution à la démocratisation de l'accès au droit au Bénin grâce à l'intelligence artificielle.**

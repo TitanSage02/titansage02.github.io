@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogPost.astro
-title: "PairQR : Plateforme P2P de Partage Chiffré par QR Code"
+title: "PairQR : Plateforme P2P de partage chiffré par QR Code"
 description: "Système de partage de fichiers et messages peer-to-peer avec chiffrement end-to-end, appairage QR et WebRTC pour la communication temps réel."
 date: "2025-04-20"
 category: "Web & Sécurité"
@@ -8,25 +8,29 @@ tags: ["WebRTC", "P2P", "Encryption", "QR Code", "React", "Node.js", "Docker"]
 author: "Espérance AYIWAHOUN"
 ---
 
-## 🔒 Introduction
+## L'obsession de la confidentialité à l'ère du numérique
 
-**PairQR** est une plateforme de partage **peer-to-peer** qui permet d'échanger des textes et fichiers de manière **sécurisée** via **QR code**. Les données sont chiffrées côté client et transitent directement entre utilisateurs via **WebRTC**.
+Dans un monde où nos données personnelles sont constamment collectées, stockées et monétisées par les géants du web, j'ai voulu créer quelque chose de différent : un moyen de partager des informations **vraiment privées**.
 
-**📦 Code source :** [GitHub - PairQR](https://github.com/votre-username/PairQR)
+L'idée de **PairQR** m'est venue en observant les pratiques de partage de fichiers actuelles. Combien de fois envoyons-nous des documents sensibles par email, les stockons-nous sur des clouds publics, ou les partageons-nous via des plateformes dont nous ne maîtrisons pas la sécurité ?
 
----
+PairQR propose une alternative radicale : **zéro stockage serveur**, **chiffrement end-to-end**, et connexion directe via QR code. Vos données ne transitent que entre vous et votre destinataire.
 
-## ✨ Caractéristiques
-
-✅ **End-to-end encryption** : Chiffrement AES-256 côté client  
-✅ **Appairage QR code** : Connexion instantanée par scan  
-✅ **WebRTC P2P** : Pas de stockage serveur  
-✅ **Sessions éphémères** : Aucune persistance  
-✅ **STUN/TURN (coturn)** : Traversée NAT
+**Code source :** [GitHub - PairQR](https://github.com/votre-username/PairQR)
 
 ---
 
-## 🏗️ Architecture
+## Les principes qui guident PairQR
+
+**End-to-end encryption** : Chiffrement AES-256 côté client  
+**Appairage QR code** : Connexion instantanée par scan  
+**WebRTC P2P** : Transit direct, pas de stockage serveur  
+**Sessions éphémères** : Aucune persistance de données  
+**STUN/TURN (coturn)** : Traversée NAT pour tous les réseaux
+
+---
+
+## Architecture technique
 
 ```
 ┌─────────────┐        ┌─────────────┐
@@ -82,7 +86,7 @@ const decryptData = (encrypted: string, key: string) => {
 
 ---
 
-## 🚀 Déploiement Docker
+## Déploiement Docker
 
 ```yaml
 services:
@@ -110,6 +114,4 @@ services:
       - "3478:3478/udp"
 ```
 
----
-
-**🌟 Use case :** Partage sécurisé de fichiers confidentiels sans cloud.
+**PairQR incarne ma vision d'un internet respectueux de la vie privée, où partager ne rime plus avec surveillance.**

@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogPost.astro
-title: "CREC Presence : Système AIoT de Pointage Biométrique à Double Authentification"
+title: "CREC Presence : Système AIoT de pointage biométrique à double authentification"
 description: "Plateforme AIoT innovante combinant reconnaissance faciale et RFID pour une gestion des présences sécurisée, conforme et anti-fraude au CREC Bénin."
 date: "2025-08-20"
 category: "Systèmes Embarqués & IoT"
@@ -8,19 +8,21 @@ tags: ["AIoT", "Computer Vision", "RFID", "FastAPI", "Raspberry Pi", "Edge Compu
 author: "Espérance AYIWAHOUN"
 ---
 
-## 🎯 Introduction
+## Quand la technologie rencontre les réalités africaines
 
-**CREC Presence** est un système **AIoT (Artificial Intelligence of Things)** développé pour le **Centre de Recherche, d'Étude et de Créativité (CREC)** au Bénin. Il révolutionne la gestion des présences scolaires en combinant **reconnaissance faciale** et **technologie RFID** pour une authentification robuste anti-fraude.
+Lorsque j'ai commencé mon mémoire de Licence en Systèmes Embarqués au **Centre de Recherche, d'Étude et de Créativité (CREC)** au Bénin, j'ai été confronté à un problème récurrent dans de nombreux établissements africains : la gestion frauduleuse des présences.
 
-**🏆 Contribution scientifique :** Mémoire de Licence en Informatique, Option Systèmes Embarqués et Internet des Objets
+Le "buddy punching" - cette pratique où un élève pointe pour un camarade absent - représentait jusqu'à 20% des pointages. Les feuilles d'émargement manuelles étaient sources d'erreurs et de perdition de temps précieux.
+
+J'ai alors conçu **CREC Presence** : un système **AIoT (Artificial Intelligence of Things)** qui combine reconnaissance faciale et technologie RFID pour une authentification robuste et inviolable.
+
+Ce projet était plus qu'un simple exercice académique - c'était une contribution concrète à l'amélioration de l'éducation en Afrique.
 
 ---
 
-## 📋 Problématique
+## Les défis que j'ai voulu résoudre
 
-### Limites des Systèmes Traditionnels
-
-Les méthodes de gestion des présences au CREC présentaient plusieurs faiblesses :
+En observant le fonctionnement quotidien du CREC, j'ai identifié plusieurs problèmes critiques :
 
 | Problème | Impact | Fréquence |
 |----------|--------|-----------|
@@ -431,32 +433,30 @@ async def record_attendance(data: AttendanceData):
 
 ---
 
-## 🔮 Perspectives d'Amélioration
+## Perspectives d'amélioration
 
-### Court Terme
-- [ ] Support multi-visages (enrôlement groupé)
-- [ ] Détection de masques faciaux (COVID-19)
-- [ ] Application mobile pour consultations
+### Court terme
+- Support multi-visages (enrôlement groupé)
+- Détection de masques faciaux (COVID-19)
+- Application mobile pour consultations
 
-### Moyen Terme
-- [ ] Analyse prédictive des absences (ML)
-- [ ] Intégration avec systèmes de paie
-- [ ] Notifications SMS/Email automatiques
+### Moyen terme
+- Analyse prédictive des absences (ML)
+- Intégration avec systèmes de paie
+- Notifications SMS/Email automatiques
 
-### Long Terme
-- [ ] Extension à d'autres établissements
-- [ ] Système de gestion de flotte de modules
-- [ ] Certification ISO 27001 (sécurité des données)
+### Long terme
+- Extension à d'autres établissements
+- Système de gestion de flotte de modules
+- Certification ISO 27001 (sécurité des données)
 
 ---
 
-## 📚 Références
+## Références
 
 1. Deng, J. et al. (2020). "RetinaFace: Single-Shot Multi-Level Face Localisation in the Wild". *CVPR*.
 2. Guo, J. et al. (2021). "InsightFace: 2D and 3D Face Analysis Project". *GitHub*.
 3. OWASP. (2023). "IoT Security Verification Standard (ISVS)".
 4. Loi n°2009-09 du Bénin relative à la protection des données à caractère personnel.
 
----
-
-**🌟 Impact :** Une solution **made in Africa** qui allie innovation technologique, respect de la vie privée et adaptation aux contraintes locales (connectivité, énergie, budget).
+**CREC Presence représente une solution "made in Africa" qui allie innovation technologique, respect de la vie privée et adaptation aux contraintes locales.**

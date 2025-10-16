@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogPost.astro
-title: "VoxThymio : Contrôle Vocal Intelligent du Robot Thymio avec IA"
+title: "VoxThymio : Contrôle vocal intelligent du robot Thymio avec IA"
 description: "Système avancé de reconnaissance vocale et compréhension sémantique pour piloter des robots Thymio par la voix, utilisant Whisper, BERT et ChromaDB."
 date: "2025-09-15"
 category: "Robotique & IA"
@@ -8,19 +8,23 @@ tags: ["Robotique", "NLP", "Speech Recognition", "Whisper", "BERT", "ChromaDB", 
 author: "Espérance AYIWAHOUN"
 ---
 
-## 🤖 Introduction
+## Le défi du contrôle robotique naturel
 
-**VoxThymio** est un système avancé de contrôle vocal pour robots **Thymio** développé pour **AI4Innov**. Il utilise l'intelligence artificielle pour comprendre et exécuter des commandes en langage naturel, avec un système d'apprentissage dynamique qui enrichit automatiquement sa base de connaissances.
+Quand j'ai commencé à travailler sur le projet **VoxThymio** pour **AI4Innov**, j'ai rapidement réalisé que l'un des plus grands obstacles à l'adoption de la robotique éducative était la complexité des interfaces de contrôle.
 
-**📦 Code source :** [GitHub - VoxThymio](https://github.com/TitanSage02/Vox-Thymio)
+Imaginez un enseignant qui veut utiliser un robot Thymio dans sa classe. Il doit soit apprendre la programmation Blockly, soit maîtriser le langage Aseba, soit se contenter d'une télécommande infrarouge aux fonctionnalités limitées. 
+
+Et si on pouvait simplement **parler** au robot ? Lui dire "avance doucement" ou "tourne à droite" comme on le ferait avec un élève ?
+
+C'est ainsi qu'est né **VoxThymio** : un système de contrôle vocal intelligent qui comprend le langage naturel et apprend de nouvelles commandes automatiquement.
+
+**Code source :** [GitHub - VoxThymio](https://github.com/TitanSage02/Vox-Thymio)
 
 ---
 
-## 📋 Problématique
+## Les limitations qui m'ont motivé
 
-### Limitations des Systèmes Existants
-
-Les robots éducatifs comme Thymio sont traditionnellement programmés via :
+Les robots éducatifs comme Thymio sont extraordinaires, mais leur accessibilité reste problématique. Voici ce que j'ai observé sur le terrain :
 - **Interfaces graphiques** (Aseba, Blockly) → Non intuitif pour débutants
 - **Code Aseba** → Barrière technique pour enseignants
 - **Télécommande infrarouge** → Interactions limitées
@@ -413,13 +417,9 @@ def is_duplicate(new_command: str, threshold=0.95):
 
 ---
 
-## 📚 Références
+## Références
 
 1. Radford, A. et al. (2022). "Robust Speech Recognition via Large-Scale Weak Supervision". *OpenAI*.
 2. Reimers, N., & Gurevych, I. (2019). "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks". *EMNLP*.
 3. Thymio Documentation. [thymio.org](https://www.thymio.org)
 4. ChromaDB Documentation. [docs.trychroma.com](https://docs.trychroma.com)
-
----
-
-**🌟 Résultat :** Un système de contrôle vocal intelligent qui rend la robotique éducative accessible à tous, tout en intégrant des technologies d'IA de pointe pour la compréhension du langage naturel.
