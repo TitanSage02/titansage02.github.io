@@ -30,6 +30,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <a href="/blog" class="btn btn-outline">
               📚 Lire mes articles
             </a>
+            <a href="/CV_Esperance_AYIWAHOUN.pdf" download="CV_Esperance_AYIWAHOUN.pdf" class="btn btn-cv">
+              📄 Télécharger mon CV
+            </a>
           </div>
         </div>
       </div>
@@ -270,6 +273,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .btn-primary:hover {
     box-shadow: var(--shadow-accent-hover);
     transform: translateY(-3px) scale(1.05);
+  }
+  
+  .btn-cv {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-cv:hover {
+    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
+    transform: translateY(-3px) scale(1.05);
+    background: linear-gradient(135deg, #059669, #047857);
+  }
+  
+  .btn-cv::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-cv:hover::before {
+    left: 100%;
   }
   
   /* Sections */
