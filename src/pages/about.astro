@@ -1,12 +1,12 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<Header />
-<main style='max-width:700px; margin:50px auto; line-height:1.7; text-align:justify; padding:0 20px;'>
-  <h2>À propos de moi</h2>
-  <p>Étudiant en Systèmes Embarqués et IoT (Top 3 de la promotion) à l’Université d’Abomey-Calavi, je me spécialise dans l’intelligence artificielle appliquée à la robotique et aux systèmes autonomes.</p>
-  <p>Mon objectif est de contribuer à l’essor de l’IA en Afrique par la recherche appliquée, la formation et le développement de solutions locales innovantes.</p>
-  <p>J’ai développé plusieurs projets mêlant vision artificielle, traitement du langage et robotique éducative.</p>
-</main>
-<Footer />
+
+<BaseLayout title="À propos - Espérance AYIWAHOUN">
+  <main style='max-width:700px; margin:50px auto; line-height:1.7; text-align:justify; padding:0 20px;'>
+    <h2>À propos de moi</h2>
+    <p>Étudiant en Systèmes Embarqués et IoT (Top 3 de la promotion) à l'Université d'Abomey-Calavi, je me spécialise dans l'intelligence artificielle appliquée à la robotique et aux systèmes autonomes.</p>
+    <p>Mon objectif est de contribuer à l'essor de l'IA en Afrique par la recherche appliquée, la formation et le développement de solutions locales innovantes.</p>
+    <p>J'ai développé plusieurs projets mêlant vision artificielle, traitement du langage et robotique éducative.</p>
+  </main>
+</BaseLayout>

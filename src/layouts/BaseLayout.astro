@@ -4,6 +4,8 @@ interface Props {
   description?: string;
 }
 
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 const { title, description = "Portfolio d'Espérance AYIWAHOUN - IA, Robotique & Systèmes Embarqués" } = Astro.props;
 ---
 
@@ -30,10 +32,12 @@ const { title, description = "Portfolio d'Espérance AYIWAHOUN - IA, Robotique &
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <Header />
   <slot />
+  <Footer />
 </body>
 </html>
 

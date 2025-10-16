@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
 
 // Get all blog posts
 const allPosts = await Astro.glob('./*.md');
@@ -48,8 +46,6 @@ const formatDate = (date: string) => {
   title="Articles Scientifiques | Espérance AYIWAHOUN" 
   description="Découvrez mes articles techniques sur l'IA, la robotique, les systèmes embarqués et l'innovation technologique."
 >
-  <Header />
-  
   <main class="blog-index">
     <div class="container">
       <!-- Hero Section -->
@@ -166,8 +162,6 @@ const formatDate = (date: string) => {
       </section>
     </div>
   </main>
-  
-  <Footer />
 </BaseLayout>
 
 <style>
