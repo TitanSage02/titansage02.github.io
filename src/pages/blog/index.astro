@@ -50,7 +50,7 @@ const formatDate = (date: string) => {
     <div class="container">
       <!-- Hero Section -->
       <section class="blog-hero">
-        <h1>📚 Articles Scientifiques & Techniques</h1>
+        <h1>📚 Articles scientifiques & techniques</h1>
         <p class="hero-description">
           Découvrez mes recherches, analyses techniques et retours d'expérience sur mes projets en IA, robotique et systèmes embarqués.
         </p>
@@ -71,57 +71,9 @@ const formatDate = (date: string) => {
       </section>
       
       <!-- Filters -->
-      <section class="filters">
-        <div class="filter-group">
-          <h3>Catégories</h3>
-          <div class="filter-buttons">
-            <a href="/blog" class:list={['filter-btn', { active: !selectedCategory }]}>
-              Toutes
-            </a>
-            {categories.map(cat => (
-              <a 
-                href={`/blog?category=${cat}`} 
-                class:list={['filter-btn', { active: selectedCategory === cat }]}
-              >
-                {cat}
-              </a>
-            ))}
-          </div>
-        </div>
-        
-        <div class="filter-group">
-          <h3>Tags populaires</h3>
-          <div class="filter-tags">
-            {uniqueTags.slice(0, 10).map(tag => (
-              <a 
-                href={`/blog?tag=${tag}`} 
-                class:list={['tag', { active: selectedTag === tag }]}
-              >
-                #{tag}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+     
       
-      <!-- Active Filters -->
-      {(selectedTag || selectedCategory) && (
-        <div class="active-filters">
-          <span>Filtres actifs :</span>
-          {selectedCategory && (
-            <span class="active-filter">
-              Catégorie: {selectedCategory}
-              <a href="/blog">×</a>
-            </span>
-          )}
-          {selectedTag && (
-            <span class="active-filter">
-              Tag: #{selectedTag}
-              <a href="/blog">×</a>
-            </span>
-          )}
-        </div>
-      )}
+     
       
       <!-- Articles Grid -->
       <section class="articles-grid">
