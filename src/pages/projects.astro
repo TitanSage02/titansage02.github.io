@@ -83,21 +83,38 @@ const categories = [...new Set(projects.map(p => p.category))];
 
 <BaseLayout title="Projets | Espérance AYIWAHOUN" description="Découvrez mes projets en IA, robotique, systèmes embarqués et innovation technologique">
   <main class="projects-page">
-    <div class="container">
-      <!-- Hero -->
-      <section class="projects-hero">
-        <h1>🚀 Projets Techniques</h1>
-        <p class="hero-description">
-          Découvrez mes réalisations en intelligence artificielle, robotique, systèmes embarqués et développement web. 
-          Chaque projet combine innovation technologique et impact pratique.
-        </p>
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-number">{projects.length}</span>
-            <span class="stat-label">Projets</span>
+    <!-- Hero Section -->
+    <section class="projects-hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span class="title-text">Mes Projets</span> <span class="title-emoji">🚀</span>
+          </h1>
+          <p class="hero-subtitle">
+            Découvrez mes réalisations en 
+            <span class="highlight">intelligence artificielle</span>, 
+            <span class="highlight">robotique</span> et 
+            <span class="highlight">systèmes embarqués</span>.
+          </p>
+          <p class="hero-description">
+            Chaque projet combine innovation technologique et impact pratique, 
+            développé avec passion et expertise technique.
+          </p>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-number">{projects.length}</span>
+              <span class="stat-label">Projets</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">{categories.length}</span>
+              <span class="stat-label">Domaines</span>
+            </div>
           </div>
-          <div class="stat">
-            <span class="stat-number">{categories.length}</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
             <span class="stat-label">Catégories</span>
           </div>
           <div class="stat">
@@ -164,61 +181,146 @@ const categories = [...new Set(projects.map(p => p.category))];
 
 <style>
   .projects-page {
-    padding: var(--space-3xl) 0;
     min-height: 100vh;
   }
   
-  /* Hero */
+  /* Hero Section */
   .projects-hero {
+    background: var(--gradient-hero);
+    color: white;
+    padding: var(--space-3xl) 0 var(--space-2xl) 0;
     text-align: center;
-    margin-bottom: var(--space-3xl);
-    padding-bottom: var(--space-3xl);
-    border-bottom: 2px solid var(--color-border);
+    position: relative;
+    overflow: hidden;
   }
   
-  .projects-hero h1 {
-    font-size: 3rem;
+  .projects-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    animation: pulse 15s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
     margin-bottom: var(--space-lg);
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    animation: fadeInUp 0.6s ease-out;
+    position: relative;
+  }
+  
+  .title-text {
+    color: #2b2828ff;
+    font-weight: 800;
+  }
+  
+  .title-emoji {
+    display: inline-block;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-lg);
+    line-height: 1.6;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 0.8s ease-out;
+    position: relative;
+  }
+  
+  .highlight {
+    color: var(--color-accent-light);
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
   }
   
   .hero-description {
-    font-size: 1.25rem;
-    color: var(--color-text-light);
-    max-width: 800px;
-    margin: 0 auto var(--space-2xl);
-    line-height: 1.6;
+    font-size: 1.125rem;
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+    opacity: 0.95;
+    line-height: 1.8;
+    animation: fadeInUp 1s ease-out;
   }
   
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   .hero-stats {
     display: flex;
     justify-content: center;
     gap: var(--space-3xl);
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-xl);
+    animation: fadeInUp 1.2s ease-out;
   }
   
   .stat {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: var(--space-lg);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all var(--transition-normal);
+  }
+  
+  .stat:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
   }
   
   .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--color-accent);
+    color: var(--color-accent-light);
     line-height: 1;
+    text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
   }
   
   .stat-label {
     font-size: 0.875rem;
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.9);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-top: var(--space-sm);
+    font-weight: 600;
+  }
+  
+  /* Projects Section */
+  .projects-section {
+    padding: var(--space-3xl) 0;
+    background: var(--color-bg);
   }
   
   /* Projects Grid */
