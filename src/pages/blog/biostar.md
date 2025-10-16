@@ -20,7 +20,7 @@ author: "Espérance AYIWAHOUN"
 ## 📋 Problématique
 
 Les publications scientifiques de la NASA sur la biologie spatiale sont :
-- **Volumineuses** et difficiles à naviguer (60+ documents)
+- **Volumineuses** et difficiles à naviguer (1k+ documents)
 - **Techniques** avec un jargon scientifique complexe
 - **Dispersées** sur plusieurs plateformes
 - **Peu accessibles** aux non-experts
