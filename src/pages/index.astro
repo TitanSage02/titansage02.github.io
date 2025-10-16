@@ -10,7 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="container">
         <div class="hero-content">
           <h1 class="hero-title">
-            Bienvenue 👋
+            <span class="title-text">Bienvenue</span> <span class="title-emoji">👋</span>
           </h1>
           <p class="hero-subtitle">
             Je suis <strong>Espérance AYIWAHOUN</strong>, étudiant passionné par 
@@ -175,9 +175,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .hero {
     background: var(--gradient-hero);
     color: white;
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0;
     text-align: center;
-    min-height: 75vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     position: relative;
@@ -206,11 +206,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 4rem;
     margin-bottom: var(--space-lg);
     animation: fadeInUp 0.6s ease-out;
-    background: linear-gradient(135deg, #ffffff 0%, var(--color-accent-light) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     position: relative;
+  }
+  
+  .title-text {
+    color: #2b2828ff;
+    font-weight: 800;
+  }
+  
+  .title-emoji {
+    display: inline-block;
+    animation: wave 2s ease-in-out infinite;
+  }
+  
+  @keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(20deg); }
+    75% { transform: rotate(-10deg); }
   }
   
   .hero-subtitle {
