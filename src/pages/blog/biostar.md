@@ -94,17 +94,14 @@ L'un des défis majeurs était de gérer efficacement la vectorisation de millie
 - **Normalisant** les vecteurs pour utiliser la distance cosinus avec FAISS
 faiss.normalize_L2(embeddings)
 
-# Ajout des embeddings
-index.add(embeddings)
+<!-- # Ajout des embeddings
 ```
+index.add(embeddings)
+``` -->
 
----
+<!-- ## 📊 Résultats et Performance
 
-## 📊 Résultats et Performance
-
-### Métriques Techniques
-
----
+### Métriques Techniques -->
 
 ## 🌟 Les fonctionnalités qui font la différence
 
