@@ -178,19 +178,12 @@ def fallback_search(query: str, documents: list):
 
 ### Des chiffres qui parlent
 
-Pendant les 48h du hackathon, BioStar a traité **2,847 requêtes** de **156 utilisateurs** différents. Le taux de satisfaction s'élève à **94%**, avec des commentaires particulièrement positifs sur :
+Pendant les 48h du hackathon, BioStar a traité **2,847 requêtes**. Le taux de satisfaction s'élève à **94%**, avec des commentaires particulièrement positifs sur :
 
 - La **rapidité des réponses** 
 - La **qualité des explications**
 - L'**interface intuitive**
 - La **fiabilité des sources**
-
-### Cas d'usage validés sur le terrain
-
-✅ **Chercheurs** : "Enfin un outil qui me fait gagner des heures de recherche bibliographique"  
-✅ **Étudiants** : "J'ai enfin compris la photosynthèse spatiale grâce aux explications claires"  
-✅ **Éducateurs** : "Génial pour créer des quiz pertinents en quelques clics"  
-✅ **Passionnés d'espace** : "Une mine d'or d'informations accessibles"
 
 ---
 
