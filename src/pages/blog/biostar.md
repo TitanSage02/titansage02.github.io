@@ -18,8 +18,11 @@ C'est ainsi qu'est né **BioStar**, notre solution pour démocratiser l'accès �
 **Code source :** [GitHub](https://github.com/TitanSage02/BioStar-NASA-Space-Apps-Challenge-2025)
 
 Notre équipe BioStar était composée de passionnés déterminés à avoir un impact :
-- **Espérance AYIWAHOUN** (Team Lead) - Architecture IA et backend
-- Nos collaborateurs dévoués - Frontend et intégration
+- **Espérance(Moi)** (Team Lead) - Architecture IA et backend
+- **Mélon Joanès** - Développeur Frontend
+- **Sarkis** - Data Engineer
+- **Donald** - Content Designer
+- **Rosselin** - UX/UI Designer, Visual Lead
 
 ---
 
