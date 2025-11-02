@@ -10,7 +10,7 @@ author: "Espérance AYIWAHOUN"
 
 ## Quand l'IA s'invite dans votre navigateur
 
-Au **Centre de Recherche et d'Expertise en Computation (CREC)**, nous explorons constamment les frontières de l'intelligence artificielle accessible. Notre dernière expérimentation nous a conduit vers un territoire fascinant : **l'analyse audio en temps réel, directement dans le navigateur web**.
+Au **Centre de Recherche d'Etude et de Créativité (CREC)**, nous explorons constamment les frontières de l'intelligence artificielle accessible. Notre dernière expérimentation nous a conduit vers un territoire fascinant : **l'analyse audio en temps réel, directement dans le navigateur web**.
 
 L'idée peut sembler simple, mais elle représente un défi technique majeur : comment faire tourner un modèle d'intelligence artificielle performant sans serveur backend, sans installation complexe, uniquement avec les technologies web natives ?
 
@@ -434,6 +434,6 @@ Ce projet ouvre la voie à une nouvelle génération d'applications web intellig
 ---
 
 **Développé avec ❤️ au CREC**  
-*Centre de Recherche et d'Expertise en Computation*  
+
 📅 02 Novembre 2025  
 👤 **Espérance AYIWAHOUN**
